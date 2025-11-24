@@ -1,0 +1,147 @@
+<!-- jamsaq_coming_soon.html
+     Simple, responsive "Coming Soon" page for jamsaq.in
+     Edit the variables inside the <script id="site-data"> JSON block to update your details.
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jamsaq.in — Coming Soon</title>
+  <meta name="description" content="Saquib Jamil | Vibe coder. Resume, blog and projects coming soon at jamsaq.in" />
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--accent:#8b5cf6;--muted:#9aa4b2;--glass: rgba(255,255,255,0.03)}
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial; margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; background:linear-gradient(180deg,#071023 0%, #07172a 60%); color:#e6eef8}
+    .wrap{width:min(980px,94%); padding:28px; background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:14px; box-shadow:0 8px 30px rgba(2,6,23,0.6); display:grid; grid-template-columns:1fr 360px; gap:22px; align-items:center}
+    @media(max-width:880px){.wrap{grid-template-columns:1fr; padding:20px}}
+    .left h1{font-size:clamp(26px,4vw,38px); margin:0 0 10px}
+    .left p.lead{margin:0 0 18px; color:var(--muted)}
+    .meta{display:flex; gap:12px; flex-wrap:wrap; margin-top:8px}
+    .pill{background:var(--glass); padding:8px 12px; border-radius:999px; font-size:13px; color:var(--muted)}
+    .countdown{display:flex; gap:10px; margin-top:20px}
+    .countdown .box{background:#071226; padding:14px 12px; border-radius:10px; text-align:center; min-width:70px}
+    .countdown .num{font-size:20px; font-weight:700}
+    .right{background:rgba(255,255,255,0.02); padding:18px; border-radius:12px}
+    .logo{height:56px; width:56px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:18px; background:linear-gradient(135deg,var(--accent), #06b6d4); color:#031124}
+    .subscribe{margin-top:12px; display:flex; gap:8px}
+    .subscribe input{flex:1; padding:10px 12px; border-radius:8px; border:1px solid rgba(255,255,255,0.04); background:transparent; color:inherit}
+    .btn{padding:10px 14px; border-radius:8px; border:0; cursor:pointer; background:linear-gradient(90deg,var(--accent), #06b6d4); color:#031124; font-weight:600}
+    .small{font-size:13px; color:var(--muted); margin-top:10px}
+    footer{margin-top:14px; color:var(--muted); font-size:13px}
+    .links{display:flex; gap:8px; margin-top:10px}
+    a.link{color:inherit; text-decoration:none; padding:8px 10px; border-radius:8px; background:rgba(255,255,255,0.02)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="left">
+      <div style="display:flex; align-items:center; gap:12px">
+        <div class="logo">JS</div>
+        <div>
+          <div style="font-weight:700">Jamsaq.in</div>
+          <div style="color:var(--muted); font-size:13px">Personal lab for code, blog and resume</div>
+        </div>
+      </div>
+
+      <h1 id="headline">Hello, I am Saquib Jamil</h1>
+      <p class="lead" id="subline">Vibe coder, Resume, blog and small projects coming soon.</p>
+
+      <div class="meta">
+        <div class="pill">Location: Delhi, India</div>
+        <div class="pill">Open to collabs</div>
+        <div class="pill">Email: iamsaquib.pc@gmail.com</div>
+      </div>
+
+      <div class="countdown" aria-hidden="true">
+        <div class="box"><div class="num" id="days">00</div><div style="font-size:12px; color:var(--muted)">days</div></div>
+        <div class="box"><div class="num" id="hours">00</div><div style="font-size:12px; color:var(--muted)">hours</div></div>
+        <div class="box"><div class="num" id="minutes">00</div><div style="font-size:12px; color:var(--muted)">minutes</div></div>
+      </div>
+
+      <div class="small">Want to reach out or see early updates? Subscribe and I will email you when things go live.</div>
+
+      <div class="links">
+        <a class="link" href="#" id="link-blog">Blog (coming)</a>
+        <a class="link" href="#" id="link-resume">Resume (coming)</a>
+      </div>
+
+      <footer>© <span id="year"></span> Saquib Jamil · Jamsaq.in</footer>
+    </div>
+
+    <div class="right">
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:12px">
+        <div>
+          <div style="font-weight:700">Stay updated</div>
+          <div style="color:var(--muted); font-size:13px">No spam. Just project drops and the resume link.</div>
+        </div>
+      </div>
+
+      <form id="subscribeForm" class="subscribe" onsubmit="return false">
+        <input id="emailInput" type="email" placeholder="your@email.com" required />
+        <button class="btn" id="subscribeBtn">Notify me</button>
+      </form>
+
+      <div class="small" id="msg" style="min-height:24px"></div>
+
+      <div style="margin-top:18px">
+        <div style="font-weight:700">Quick links</div>
+        <div style="color:var(--muted); font-size:13px; margin-top:8px">We will update the links soon!.</div>
+      </div>
+    </div>
+  </div>
+
+  <script id="site-data" type="application/json">
+    {
+      "headline":"Hello, I am Saquib Jamil",
+      "subline":"Vibe coder, Resume, blog and small projects coming soon.",
+      "launchDate":"2026-01-01T00:00:00+05:30",
+      "email":"iamsaquib.pc@gmail.com",
+      "links":{
+        "blog":"#",
+        "resume":"#"
+      }
+    }
+  </script>
+
+  <script>
+    // Read site data from the JSON block so you can easily edit it
+    const data = JSON.parse(document.getElementById('site-data').textContent);
+    document.getElementById('headline').textContent = data.headline;
+    document.getElementById('subline').textContent = data.subline;
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('link-blog').href = data.links.blog;
+    document.getElementById('link-resume').href = data.links.resume;
+
+    // Countdown
+    const launch = new Date(data.launchDate).getTime();
+    function updateCountdown(){
+      const now = Date.now();
+      const diff = Math.max(0, launch - now);
+      const days = Math.floor(diff / (1000*60*60*24));
+      const hours = Math.floor((diff / (1000*60*60)) % 24);
+      const minutes = Math.floor((diff / (1000*60)) % 60);
+      document.getElementById('days').textContent = String(days).padStart(2,'0');
+      document.getElementById('hours').textContent = String(hours).padStart(2,'0');
+      document.getElementById('minutes').textContent = String(minutes).padStart(2,'0');
+    }
+    updateCountdown(); setInterval(updateCountdown, 60*1000);
+
+    // Simple subscribe handler (client-side only)
+    const form = document.getElementById('subscribeForm');
+    const emailInput = document.getElementById('emailInput');
+    const msg = document.getElementById('msg');
+    form.addEventListener('submit', ()=>{
+      const em = emailInput.value.trim();
+      if(!em) return;
+      // For hobby sites, you can plug this to Formspree or Netlify forms later.
+      msg.textContent = 'Thanks! You will be notified when the site launches.';
+      emailInput.value = '';
+    });
+
+    // Prefill email placeholder if provided
+    if(data.email) emailInput.placeholder = data.email;
+  </script>
+</body>
+</html>
